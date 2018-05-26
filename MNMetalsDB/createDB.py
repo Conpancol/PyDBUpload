@@ -6,7 +6,7 @@ from pymongo import MongoClient
 
 client = MongoClient('localhost', 27017)
 db = client.conpancol
-collection = db.mnmetals
+collection = db.mnmaterials
 #... result = collection.delete_many({})
 
 def alreadyExists(newID):
@@ -15,7 +15,7 @@ def alreadyExists(newID):
     else:
         return False
 
-with open('data/DBMetals-3375.csv', 'r', encoding='utf-8') as f:
+with open('data/DBMetals-3364.csv', 'r', encoding='utf-8') as f:
     reader = csv.reader(f, dialect="excel-tab")
     for row in reader:
         item = row[1]
