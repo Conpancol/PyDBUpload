@@ -6,8 +6,7 @@ from pymongo import MongoClient
 
 client = MongoClient('localhost', 27017)
 db = client.conpancol
-collection = db.mnmetals
-#... result = collection.delete_many({})
+collection = db.mnmaterials
 
 def alreadyExists(newID):
     if collection.find({'itemcode': newID}).count() > 0:
@@ -15,7 +14,7 @@ def alreadyExists(newID):
     else:
         return False
 
-with open('data/DBMetals-3375.csv', 'r', encoding='utf-8') as f:
+with open('data/DBRefractories.csv', 'r', encoding='utf-8') as f:
     reader = csv.reader(f, dialect="excel-tab")
     for row in reader:
         item = row[1]
@@ -28,16 +27,17 @@ with open('data/DBMetals-3375.csv', 'r', encoding='utf-8') as f:
         result = find_type(dsc)
         material.setType(result)
         if result == 'NA':
-            print(material)
+            print("no type: " + material.__str__())
         result = find_dimensions(dsc)
         material.setDimensions(result)
         if result == 'NA':
-            print(material)
+            print("no dims: " + material.__str__())
 
         if alreadyExists(material.getItemCode()):
-            print(material)
+            print("Already present: " + material.__str__())
             continue
         else:
             print(material.getItemCode() + " : added")
+            print(material.__dict__)
             obj_id = collection.insert_one(material.__dict__)
 
