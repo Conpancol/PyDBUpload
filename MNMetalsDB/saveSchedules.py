@@ -1,9 +1,20 @@
 import csv
+import json
 from PipeSchedules import PipeSchedule
 
 from pymongo import MongoClient
 
-client = MongoClient('localhost', 27017)
+dev = True
+with open('config/dbconfig.json', 'r') as f:
+    config = json.load(f)
+    if dev:
+        dburl = config['DEV']['DBURL']
+        dport = int(config['DEV']['DBPORT'])
+        client = MongoClient(dburl, dport)
+    else:
+        dburl = config['PROD']['DBURL']
+        client = MongoClient(dburl)
+
 db = client.conpancol
 collection = db.schedules
 result = collection.delete_many({})
