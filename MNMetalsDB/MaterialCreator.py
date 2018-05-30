@@ -10,8 +10,8 @@ class MaterialCreator:
 
     def __init__(self):
         """clase que crea MATERIALS en el formator necesario para guardar en la DB"""
-        dev = Trues
-        with open('config/dbconfig.json', 'r') as f:
+        dev = False
+        with open('config/dbconfig.prod', 'r') as f:
             config = json.load(f)
             if dev:
                 dburl = config['DEV']['DBURL']
