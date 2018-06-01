@@ -8,10 +8,12 @@ class Quotes:
         self.processedDate = "X"
         self.sentDate = "X"
         self.user = "X"
+        self.providerId = "X"
         self.providerName = "X"
         self.contactName = "X"
         self.incoterms = "X"
         self.materialList = []
+        self.note = "NA"
 
     def setIntenalCode(self, code):
         self.internalCode = code
@@ -24,6 +26,9 @@ class Quotes:
 
     def setUser(self,user):
         self.user = user
+
+    def setProviderId(self,id):
+        self.providerId = id
 
     def setProviderName(self,provider):
         self.providerName = provider
@@ -41,8 +46,17 @@ class Quotes:
     def setProcessedDate(self,date):
         self.processedDate = date
 
-    def setInconterms(self,incoterm):
-        self.incoterms = incoterm
+    def setSentDate(self,date):
+        self.sentDate = date
+
+    def setUser(self,user):
+        self.user = user
+
+    def setIncoterms(self,incoterms):
+        self.incoterms = incoterms
+
+    def setNote(self,note):
+        self.note = note
 
     def to_json(self):
         obj_list = [ ob.__dict__ for ob in self.materialList]

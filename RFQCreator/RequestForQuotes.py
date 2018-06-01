@@ -8,6 +8,7 @@ class RequestForQuotes:
         self.user = "aosorio"
         self.sender = "X"
         self.company = "X"
+        self.note = "NA"
         self.materialList = []
 
     def setIntenalCode(self, code):
@@ -34,6 +35,9 @@ class RequestForQuotes:
 
     def setProcessedDate(self,date):
         self.processedDate = date
+
+    def setNote(self,note):
+        self.note = note
 
     def to_json(self):
         obj_list = [ ob.__dict__ for ob in self.materialList]

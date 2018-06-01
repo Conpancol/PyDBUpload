@@ -29,6 +29,14 @@ class RFQCreator:
         else:
             raise Exception('Material not found')
 
+    def alreadyExists(self, newID):
+        if self.rfqcollection.find({'internalCode': newID}).count() > 0:
+            logging.info('RFQ already exists  \t' + str(newID))
+            return True
+        else:
+            logging.info('RFQ does not exists  \t' + str(newID))
+            return False
+
     def setRFQInformation(self, internalCode, externalCode, sender, company, receivedDate):
         self.rfq.setIntenalCode(internalCode)
         self.rfq.setExternalCode(externalCode)
@@ -37,6 +45,9 @@ class RFQCreator:
         self.rfq.setReceivedDate(receivedDate)
         dt = datetime.datetime.now()
         self.rfq.setProcessedDate(dt.strftime('%d/%m/%Y'))
+
+    def addRFQNote(self, note):
+        self.rfq.setNote(note)
 
     def createRFQfromCSV(self, csvfile):
         with open(csvfile, 'r', encoding='utf-8') as f:
@@ -66,4 +77,4 @@ class RFQCreator:
         print(json.dumps(output))
         totalMaterials = len(rfq_json['materialList'])
         logging.info('End of RFQ creation  \t' + str(totalMaterials))
-        # ... self.rfqcollection.insert_one(output)
+        self.rfqcollection.insert_one(output)
