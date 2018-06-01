@@ -8,6 +8,11 @@ class QuotedMaterials(ExtMaterials):
         self.unitPrice = 0.00
         self.totalPrice = 0.00
         self.note = "NA"
+        self.setItemCode(material['itemcode'])
+        self.setDescription(material['description'])
+        self.setType(material['type'])
+        self.setCategory(material['category'])
+        self.setDimensions(material['dimensions'])
 
     def setTheoreticalWeight(self, theoWeight):
         self.theoreticalWeight = theoWeight
