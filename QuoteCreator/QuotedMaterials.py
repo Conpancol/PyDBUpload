@@ -7,6 +7,7 @@ class QuotedMaterials(ExtMaterials):
         self.givenWeight = 0.00
         self.unitPrice = 0.00
         self.totalPrice = 0.00
+        self.countryOrigin = "NA"
         self.note = "NA"
         self.setItemCode(material['itemcode'])
         self.setDescription(material['description'])
@@ -29,5 +30,5 @@ class QuotedMaterials(ExtMaterials):
     def setNote(self,note):
         self.note = note
 
-
-
+    def setCountryOrigin(self,country):
+        self.countryOrigin = country

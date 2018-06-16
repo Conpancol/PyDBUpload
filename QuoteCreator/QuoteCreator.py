@@ -69,7 +69,8 @@ class QuoteCreator:
                 givenweight = float(row[5])
                 unitprice = float(row[6])
                 totalprice = float(row[7])
-                note = row[8]
+                country = row[8]
+                note = row[9]
                 try:
                     material = self.lookForMaterial(itemCode)
                     quotedMaterial = QuotedMaterials(material)
@@ -80,6 +81,7 @@ class QuoteCreator:
                     quotedMaterial.setGivenWeight(givenweight)
                     quotedMaterial.setUnitPrice(unitprice)
                     quotedMaterial.setTotalPrice(totalprice)
+                    quotedMaterial.setCountryOrigin(country)
                     quotedMaterial.setNote(note)
                     qtmaterials.append(quotedMaterial)
                 except Exception as ex:
