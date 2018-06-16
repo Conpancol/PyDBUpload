@@ -22,6 +22,31 @@ class RFQTestCase(unittest.TestCase):
             rfq.createRFQfromCSV('data/3364.csv')
             self.assertEqual(True, True)
 
+    def test_rfqcreationThree(self):
+        rfq = RFQCreator()
+        if rfq.alreadyExists(3390):
+            print("RFQ already exists - skip")
+        else:
+            rfq.setRFQInformation(3390, 1201, 'Javier Socorro', 'MN', '14/06/2018')
+            rfq.addRFQNote("NA")
+            rfq.createRFQfromCSV('data/REQ-1202_METALS_REQ.csv')
+            self.assertEqual(True, True)
+
+    def test_badData(self):
+        rfq = RFQCreator()
+        if rfq.alreadyExists(10000):
+            print("RFQ already exists - skip")
+        else:
+            rfq.setRFQInformation(10000, 151360, 'Javier Socorro', 'MN', '23/02/2018')
+            rfq.addRFQNote("Para fabricacion agujas planta de secado")
+            rfq.createRFQfromCSV('data/BAD-data-test.csv')
+            self.assertEqual(True, True)
+
+    def test_exportData(self):
+        rfq = RFQCreator()
+        rfq.exportRFQtoCSV(3390,'RFQ_3390_MN.csv')
+        self.assertEqual(True, True)
+
 
 if __name__ == '__main__':
     unittest.main()
