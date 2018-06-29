@@ -69,8 +69,9 @@ class QuoteCreator:
                 givenweight = float(row[5])
                 unitprice = float(row[6])
                 totalprice = float(row[7])
-                country = row[8]
-                note = row[9]
+                currency = row[8]
+                country = row[9]
+                note = row[10]
                 try:
                     material = self.lookForMaterial(itemCode)
                     quotedMaterial = QuotedMaterials(material)
@@ -81,6 +82,7 @@ class QuoteCreator:
                     quotedMaterial.setGivenWeight(givenweight)
                     quotedMaterial.setUnitPrice(unitprice)
                     quotedMaterial.setTotalPrice(totalprice)
+                    quotedMaterial.setCurrency(currency)
                     quotedMaterial.setCountryOrigin(country)
                     quotedMaterial.setNote(note)
                     qtmaterials.append(quotedMaterial)
