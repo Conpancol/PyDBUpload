@@ -92,10 +92,19 @@ class RFQCreator:
 
     def exportRFQtoCSV(self, code, csvfile):
 
+        labels = []
+        labels.append('Id')
+        labels.append('OrderId')
+        labels.append('ItemId')
+        labels.append('Description')
+        labels.append('Type')
+        labels.append('Quantity')
+        labels.append('Unit')
+
         try:
             path = "./data/export/" + csvfile
             with open(path, 'w', encoding='utf-8', newline='') as f:
-                writer = csv.writer(f, dialect="excel-tab", quoting=csv.QUOTE_NONE, quotechar='')
+                writer = csv.writer(f, dialect="excel", delimiter=';')
 
                 if self.alreadyExists(code):
 
@@ -112,7 +121,10 @@ class RFQCreator:
                     note = 'Note: ' + str(rfq["note"])
 
                     writer.writerow([note])
-                    writer.writerow([ '' ])
+                    writer.writerow([''])
+                    labels_rwo = '\t'.join(labels)
+                    print(labels_rwo)
+                    writer.writerow(labels)
 
                     items = rfq["materialList"]
 
@@ -136,6 +148,16 @@ class RFQCreator:
 
                         writer.writerow(rwo)
                         id += 1
+
+                    for i in range(1,3):
+                        writer.writerow([' '])
+                    bottom_txt_file = open('./data/Bottom_conditions_EN_FOB.txt', 'r')
+                    bottom_txt_rows = bottom_txt_file.readlines()
+                    print(bottom_txt_rows)
+                    for line in bottom_txt_rows:
+                        row = line.replace('\n', ' ')
+                        writer.writerow([row])
+                    bottom_txt_file.close()
 
                 else:
                     logging.info('RFQ does not exists in DB')

@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 import json
 import logging
+from Utilities import *
 
 
 class MaterialStats:
@@ -59,7 +60,24 @@ class MaterialStats:
         for key in self.types:
             print(key + '\t' + str(self.types[key]))
 
+    def checkMaterialType(self):
+
+        vars = []
+        vars.append('description')
+        vars.append('type')
+
+        cursor = self.getProjections(vars)
+
+        idx = 0
+        for data in cursor:
+            dsc = data["description"]
+            type = data["type"].strip()
+            type_xcheck = find_type(dsc.split(','))
+            idx += 1
+            if type != type_xcheck:
+                print(str(idx) + '\t' + dsc + '\t' + type + '\t' + type_xcheck)
+
 
 mat = MaterialStats()
 mat.getCategoryStatS()
-
+mat.checkMaterialType()
