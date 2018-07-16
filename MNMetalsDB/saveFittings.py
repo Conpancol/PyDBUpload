@@ -75,15 +75,15 @@ class FittingSaver:
             print(ex)
 
 input_file_list = []
-input_file_list.append(['fittings-SL-stubends.csv','SHORT LENGTH STUB ENDS','ASTM A403 / A815 ASME B16.9'])
-input_file_list.append(['fittings-elbows-90-LR.csv','ELBOWS 90º LONG RADIUS','ASTM A403 / A815 ASME B16.9'])
-input_file_list.append(['fittings-elbows-45-LR.csv','ELBOWS 45º LONG RADIUS','ASTM A403 / A815 ASME B16.9'])
-input_file_list.append(['fittings-elbows-90-SR.csv','ELBOWS 90º SHORT RADIUS','ASTM A403 ASME B16.28 / ASME B16.9'])
-input_file_list.append(['fittings-endcaps.csv','END CAPS','ASTM A403 / A815 ASME B16.9'])
-input_file_list.append(['fittings-conc-reducers.csv','CONCENTRIC REDUCERS','ASTM A403 / A815 ASME B16.9'])
-input_file_list.append(['fittings-eccen-reducers.csv','ECCENTRIC REDUCERS','ASTM A403 / ASME B16.9'])
-input_file_list.append(['fittings-equal-tees.csv','EQUAL TEES','ASTM A403 / A815 ASME B16.9'])
-input_file_list.append(['fittings-reducing-tees.csv','REDUCING TEES','ASTM A403 / A815 ASME B16.9'])
+input_file_list.append(['fittings-SL-stubends.csv','STUB-END,SHORT LENGTH,SL','ASTM A403 / A815 ASME B16.9'])
+input_file_list.append(['fittings-elbows-90-LR.csv','ELBOW,90,LR','ASTM A403 / A815 ASME B16.9'])
+input_file_list.append(['fittings-elbows-45-LR.csv','ELBOW,45,LR','ASTM A403 / A815 ASME B16.9'])
+input_file_list.append(['fittings-elbows-90-SR.csv','ELBOW,90,SR','ASTM A403 ASME B16.28 / ASME B16.9'])
+input_file_list.append(['fittings-endcaps.csv','CAP,END-CAP','ASTM A403 / A815 ASME B16.9'])
+input_file_list.append(['fittings-conc-reducers.csv','REDUCER,CONCENTRIC','ASTM A403 / A815 ASME B16.9'])
+input_file_list.append(['fittings-eccen-reducers.csv','REDUCER,ECCENTRIC','ASTM A403 / ASME B16.9'])
+input_file_list.append(['fittings-equal-tees.csv','TEE,EQUAL','ASTM A403 / A815 ASME B16.9'])
+input_file_list.append(['fittings-reducing-tees.csv','TEE,REDUCING','ASTM A403 / A815 ASME B16.9'])
 
 saver = FittingSaver()
 
