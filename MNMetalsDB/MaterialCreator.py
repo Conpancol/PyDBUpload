@@ -36,7 +36,7 @@ class MaterialCreator:
             return False
 
     def createQuotefromCSV(self, csvfile):
-        with open(csvfile, 'r', encoding='utf-8') as f:
+        with open(csvfile, 'r', encoding='utf-8', errors='ignore') as f:
             reader = csv.reader(f, dialect="excel-tab")
             filename = csvfile.split('/')[-1]
             for row in reader:
@@ -45,7 +45,8 @@ class MaterialCreator:
                 cat = dsc[0]
                 material = Material()
                 material.setItemCode(item)
-                material.setDescription(','.join(dsc))
+                description = ','.join(dsc)
+                material.setDescription(description)
                 material.setCategory(cat)
                 result = find_type(dsc)
                 material.setType(result)

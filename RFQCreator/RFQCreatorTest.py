@@ -44,7 +44,7 @@ class RFQTestCase(unittest.TestCase):
 
     def test_exportData(self):
         rfq = RFQCreator()
-        rfq.exportRFQtoCSV(3397,'RFQ_3397_MN.csv')
+        rfq.exportRFQtoCSV(3399,'RFQ_3399_MN.csv')
         self.assertEqual(True, True)
 
 
